@@ -13,15 +13,6 @@ class App extends Component {
     }
     
   }
-  
-  // async componentDidMount() {
-  //   const response = await fetch("./assets/listing.js");
-  //   console.log(response);
-  //   const json = await response.json();
-  //   console.log('json: ', json)
-  //   this.setState({ jobs: json })
-  // }
-
 
   componentDidMount() {
     fetch("./assets/listing.js")
@@ -30,24 +21,14 @@ class App extends Component {
   }
 
   //Build function to push data from addForm to push data to { jobs }
-  handleSubmit = (event) => {
-    event.preventDefault()
-    console.log('handleSubmit')
-    const data = new FormData(event.target)
-    console.log('data: ', data)
-    addListing({
-      title: data.get('title'),
-      compensation: data.get('pay'),
-      description: data.get('description'),
-      interested: []
+  addListing = (newJob) => {
+    console.log('newJob: ', newJob)
+    const { jobs } = this.state
+    this.setState({
+      jobs: [newJob, ...jobs]
     })
-    event.target.reset()
   }
 
-  addListing(data){
-    let container = document.querySelector,
-        listing = document.createElement('li')
-  }
 
   render() {
     // console.log('state.jobs: ', this.state.jobs)
@@ -56,7 +37,7 @@ class App extends Component {
         <Header />
         <main>
           <JobsComponent jobsInfo={this.state.jobs} />
-          <AddJobForm handleSubmit={this.handleSubmit} />
+          <AddJobForm addListing={this.addListing}/>
         </main>
       </div>
     );
