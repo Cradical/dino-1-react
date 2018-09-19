@@ -22,7 +22,6 @@ class App extends Component {
 
   //Build function to push data from addForm to push data to { jobs }
   addListing = (newJob) => {
-    console.log('newJob: ', newJob)
     const { jobs } = this.state
     this.setState({
       jobs: [newJob, ...jobs]
@@ -31,7 +30,6 @@ class App extends Component {
 
 
   render() {
-    // console.log('state.jobs: ', this.state.jobs)
     return ( 
       <div className = "App" >
         <Header />

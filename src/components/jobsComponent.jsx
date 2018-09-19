@@ -1,7 +1,6 @@
 import React from "react";
 
 const JobsComponent = ({ jobsInfo }) => {
-  console.log("jobsInfo: ", jobsInfo);
   return (
     <React.Fragment>
       <section>
